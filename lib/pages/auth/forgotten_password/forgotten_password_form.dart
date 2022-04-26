@@ -3,8 +3,8 @@ import 'package:easy_auth/easy_auth.dart';
 import 'package:easy_utils/easy_utils.dart';
 import 'package:flutter/material.dart';
 
-class ResetPasswordFields extends StatelessWidget {
-  const ResetPasswordFields({Key? key}) : super(key: key);
+class ForgottenPasswordForm extends StatelessWidget {
+  const ForgottenPasswordForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +46,16 @@ class ResetPasswordFields extends StatelessWidget {
                   height: 80,
                   errorText: Strings.errorInvalidEmail,
                   decoration: InputDecoration(
-                    fillColor: Theme.of(context).colorScheme.secondary,
                     hintText: "Email",
+                    fillColor: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
+                HSpace(MediaQuery.of(context).size.height * 0.05),
                 PasswordResetButton(
                   child: Text(
                     'Reset password',
                     style: Theme.of(context).textTheme.button!.copyWith(
-                          color: Theme.of(context).colorScheme.secondary,
+                          color: Theme.of(context).colorScheme.tertiary,
                         ),
                   ),
                 ),

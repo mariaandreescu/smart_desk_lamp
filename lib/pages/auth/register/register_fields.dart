@@ -2,6 +2,7 @@ import 'package:boilerplate_app/resources/strings.dart';
 import 'package:easy_auth/easy_auth.dart';
 import 'package:easy_utils/easy_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class RegisterFields extends StatelessWidget {
   const RegisterFields({Key? key}) : super(key: key);
@@ -36,36 +37,55 @@ class RegisterFields extends StatelessWidget {
                   height: 80,
                   errorText: Strings.errorInvalidEmail,
                   decoration: InputDecoration(
-                    fillColor: Theme.of(context).colorScheme.secondary,
                     hintText: "Email",
+                    fillColor: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
                 RegisterPasswordField(
                   height: 80,
                   errorText: Strings.errorInvalidPassword,
                   decoration: InputDecoration(
-                    fillColor: Theme.of(context).colorScheme.secondary,
                     hintText: "Password",
+                    fillColor: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
                 RegisterConfirmPasswordField(
                   height: 80,
                   errorText: Strings.errorInvalidConfirmPassword,
                   decoration: InputDecoration(
-                    fillColor: Theme.of(context).colorScheme.secondary,
                     hintText: "Confirm Password",
+                    fillColor: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
                 RegisterButton(
                   child: Text(
                     'Register',
                     style: Theme.of(context).textTheme.button!.copyWith(
-                          color: Theme.of(context).colorScheme.secondary,
+                          color: Theme.of(context).colorScheme.tertiary,
                         ),
                   ),
                 ),
+                HSpace(MediaQuery.of(context).size.height * 0.04),
               ],
             ),
+            Column(
+              children: [
+                GoogleLoginButton(
+                  child: SvgPicture.asset(
+                    Strings.googleIcon,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    "Already have an account? Login",
+                    style: Theme.of(context).textTheme.subtitle2,
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),

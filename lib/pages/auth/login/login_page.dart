@@ -1,10 +1,10 @@
-import 'package:boilerplate_app/pages/reset_password/widgets/reset_password_form.dart';
+import 'package:boilerplate_app/pages/auth/login/login_fields.dart';
 import 'package:boilerplate_app/resources/strings.dart';
 import 'package:easy_utils/easy_utils.dart';
 import 'package:flutter/material.dart';
 
-class ResetPasswordPage extends StatelessWidget {
-  const ResetPasswordPage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class ResetPasswordPage extends StatelessWidget {
                 child: LayoutBuilder(
                   builder: (context, constraints) => Stack(
                     children: const [
-                      ResetPasswordForm(),
+                      LoginFields(),
                     ],
                   ),
                 ),

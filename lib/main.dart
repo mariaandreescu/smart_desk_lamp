@@ -1,5 +1,5 @@
+import 'package:boilerplate_app/pages/auth/login/login_page.dart';
 import 'package:boilerplate_app/pages/home/home_page.dart';
-import 'package:boilerplate_app/pages/auth/auth_page.dart';
 import 'package:boilerplate_app/resources/custom_theme.dart';
 import 'package:easy_auth/easy_auth.dart';
 import 'package:easy_utils/easy_utils.dart';
