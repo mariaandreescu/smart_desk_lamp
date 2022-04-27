@@ -14,8 +14,11 @@ class LoginPage extends StatelessWidget {
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              HSpace(MediaQuery.of(context).size.height * 0.25),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2,
+              ),
               Padding(
                 padding:
                     EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
@@ -39,13 +42,11 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
-                child: LayoutBuilder(
-                  builder: (context, constraints) => Stack(
-                    children: const [
-                      LoginFields(),
-                    ],
-                  ),
+              LayoutBuilder(
+                builder: (context, constraints) => Stack(
+                  children: const [
+                    LoginFields(),
+                  ],
                 ),
               ),
             ],

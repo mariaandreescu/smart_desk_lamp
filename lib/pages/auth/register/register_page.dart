@@ -17,7 +17,8 @@ class RegisterPage extends StatelessWidget {
             children: [
               HSpace(MediaQuery.of(context).size.height * 0.15),
               Padding(
-                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+                padding:
+                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
                 child: Row(
                   children: [
                     SizedBox(
@@ -27,7 +28,10 @@ class RegisterPage extends StatelessWidget {
                         child: FittedBox(
                           child: Text(
                             Strings.title,
-                            style: Theme.of(context).textTheme.titleLarge,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(color: const Color(0xFF272C38)),
                           ),
                         ),
                       ),
