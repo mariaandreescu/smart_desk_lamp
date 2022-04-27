@@ -28,7 +28,10 @@ class LoginPage extends StatelessWidget {
                         child: FittedBox(
                           child: Text(
                             Strings.title,
-                            style: Theme.of(context).textTheme.titleLarge,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(color: const Color(0xFF272C38)),
                           ),
                         ),
                       ),
