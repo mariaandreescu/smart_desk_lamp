@@ -37,30 +37,31 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAa9dD0MZSRgnFqgGeZYbt5ESvaPuAHmhE',
-    appId: '1:291840111308:web:6c18206e457d537f4b4869',
-    messagingSenderId: '291840111308',
-    projectId: 'boilerplateapp-91533',
-    authDomain: 'boilerplateapp-91533.firebaseapp.com',
-    storageBucket: 'boilerplateapp-91533.appspot.com',
-    measurementId: 'G-0YVM0SD953',
+    apiKey: 'AIzaSyBnfDgB4zCfV-lmDnotJZtcuRPEHa49q1M',
+    appId: '1:882304476186:web:cfa45f306fa3e8f6cb5da3',
+    messagingSenderId: '882304476186',
+    projectId: 'iot-project-bcf43',
+    authDomain: 'iot-project-bcf43.firebaseapp.com',
+    storageBucket: 'iot-project-bcf43.appspot.com',
+    measurementId: 'G-XRPV13TR4P',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDPoHE-Go9CM_xEnlWJMXKQ3qHLw69wK-k',
-    appId: '1:291840111308:android:98630ea0ad1c5e284b4869',
-    messagingSenderId: '291840111308',
-    projectId: 'boilerplateapp-91533',
-    storageBucket: 'boilerplateapp-91533.appspot.com',
+    apiKey: 'AIzaSyBeFRPjKeQqtU9tcHaysr2vDuZWKGD5lqU',
+    appId: '1:882304476186:android:ff1883f1b7a53eb6cb5da3',
+    messagingSenderId: '882304476186',
+    projectId: 'iot-project-bcf43',
+    storageBucket: 'iot-project-bcf43.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAlDITkR5bNdVZ3uCfB0-I_bFZv0m9P57g',
-    appId: '1:291840111308:ios:725fc4482c87f3be4b4869',
-    messagingSenderId: '291840111308',
-    projectId: 'boilerplateapp-91533',
-    storageBucket: 'boilerplateapp-91533.appspot.com',
-    iosClientId: '291840111308-epjupo3aut2u40n5gro6sjs6fsksq3ap.apps.googleusercontent.com',
-    iosBundleId: 'com.kallso.boilerplateapp',
+    apiKey: 'AIzaSyB7P93rFrQGq9dAVmR30gECms9KlvXDY5k',
+    appId: '1:882304476186:ios:72b5f18eedebfea4cb5da3',
+    messagingSenderId: '882304476186',
+    projectId: 'iot-project-bcf43',
+    storageBucket: 'iot-project-bcf43.appspot.com',
+    androidClientId: '882304476186-mkdnu7131krr36v0796b76lkmnf8cfk8.apps.googleusercontent.com',
+    iosClientId: '882304476186-jds43e66djpj0r6j2dq2nua2mctcvs3i.apps.googleusercontent.com',
+    iosBundleId: 'com.example.boilerplateApp',
   );
 }

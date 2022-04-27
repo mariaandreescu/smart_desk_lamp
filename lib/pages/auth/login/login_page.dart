@@ -17,7 +17,8 @@ class LoginPage extends StatelessWidget {
             children: [
               HSpace(MediaQuery.of(context).size.height * 0.25),
               Padding(
-                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+                padding:
+                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
                 child: Row(
                   children: [
                     SizedBox(

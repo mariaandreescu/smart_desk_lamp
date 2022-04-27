@@ -25,7 +25,7 @@ class LoginFields extends StatelessWidget {
           );
       },
       child: Padding(
-        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
