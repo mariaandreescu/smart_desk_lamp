@@ -1,6 +1,5 @@
 import 'package:boilerplate_app/pages/auth/login/login_fields.dart';
 import 'package:boilerplate_app/resources/strings.dart';
-import 'package:easy_utils/easy_utils.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
