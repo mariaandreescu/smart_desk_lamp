@@ -1,4 +1,4 @@
-# boilerplate_app
+# Smart Desk Lamp
 
 A new Flutter project.
 
