@@ -1,12 +1,19 @@
 part of 'ble_cubit.dart';
 
-enum BleStatus { searching, loaded, connected, failed }
+enum BleStatus {
+  searching,
+  done,
+  loadingPaired,
+  loadedPaired,
+  connected,
+  failed
+}
 
 class BleState extends Equatable {
   const BleState({
     this.errorMessage,
     required this.status,
-    required this.devices,
+    this.devices = const [],
   });
 
   final String? errorMessage;
@@ -22,12 +29,12 @@ class BleState extends Equatable {
   BleState copyWith({
     required BleStatus status,
     String? errorMessage,
-    required List<BluetoothDevice> devices,
+    List<BluetoothDevice> devices = const [],
   }) {
     return BleState(
       errorMessage: errorMessage ?? this.errorMessage,
       status: status,
-      devices: this.devices,
+      devices: devices,
     );
   }
 }

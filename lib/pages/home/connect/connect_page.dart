@@ -10,7 +10,7 @@ class ConnectPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<BleCubit>(),
+      create: (context) => getIt<BleCubit>()..search(),
       child: const ConnectView(),
     );
   }

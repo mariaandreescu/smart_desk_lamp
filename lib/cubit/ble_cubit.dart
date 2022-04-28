@@ -10,31 +10,36 @@ part 'ble_state.dart';
 class BleCubit extends Cubit<BleState> {
   List<BluetoothDevice> devices = [];
 
-  BleCubit() : super(const BleState(status: BleStatus.searching, devices: []));
+  BleCubit()
+      : super(const BleState(status: BleStatus.loadingPaired, devices: []));
 
   Future<void> search() async {
-    print(state);
-    if (state.status == BleStatus.connected) {
-      return;
-    }
-    if (state.status == BleStatus.searching) {
-      try {
-        FlutterBlue.instance.startScan().timeout(const Duration(seconds: 5));
-        FlutterBlue.instance.scanResults
-            .listen((List<ScanResult> results) async {
-          for (ScanResult result in results) {
+    emit(state.copyWith(status: BleStatus.searching));
+    try {
+      devices = [...await FlutterBlue.instance.connectedDevices];
+      emit(state.copyWith(
+        status: BleStatus.loadedPaired,
+        devices: devices,
+      ));
+      await FlutterBlue.instance.startScan(
+        timeout: const Duration(seconds: 5),
+      );
+      FlutterBlue.instance.scanResults.listen((results) {
+        for (ScanResult result in results) {
+          if (result.device.type == BluetoothDeviceType.le &&
+              !devices.contains(result.device)) {
             devices.add(result.device);
-            print(result.device);
-            if (result.device.id.toString() == "BE:AC:10:00:00:01") {
-              print("attempting to connect to ${result.device.id}");
-              await result.device.connect();
-            }
           }
-        });
-        FlutterBlue.instance.stopScan();
-      } on Exception catch (e) {
-        print(e);
-      }
+        }
+        print(devices);
+      });
+      FlutterBlue.instance.stopScan();
+      emit(state.copyWith(
+        status: BleStatus.done,
+        devices: devices,
+      ));
+    } on Exception catch (e) {
+      print(e);
     }
   }
 }
