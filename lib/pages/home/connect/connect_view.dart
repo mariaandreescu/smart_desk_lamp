@@ -23,6 +23,8 @@ class ConnectView extends StatelessWidget {
       ),
       body: BlocBuilder<BleCubit, BleState>(
         builder: (context, state) {
+          // print(state.devices);
+          // print(state.status);
           return ListView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: state.devices.length,
@@ -34,47 +36,86 @@ class ConnectView extends StatelessWidget {
                   builder: (context, snapshot) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(state.devices[index].name),
-                          ElevatedButton(
-                            onPressed: () async {
-                              if (snapshot.data ==
-                                  BluetoothDeviceState.connected) {
-                                state.devices[index].disconnect();
-                              } else {
-                                state.devices[index].connect();
-                              }
-                            },
-                            child:
-                                snapshot.data == BluetoothDeviceState.connected
-                                    ? const Text('Disconnect')
-                                    : const Text('Connect'),
-                          ),
-                          ElevatedButton(
-                            onPressed: () async {
-                              if (snapshot.data ==
-                                  BluetoothDeviceState.disconnected) {
-                                print("nothing to be done");
-                              } else {
-                                final List<BluetoothService> services =
-                                    state.devices[index].name == "ESP32"
-                                        ? await state.devices[index]
-                                            .discoverServices()
-                                        : [];
-                                services[2]
-                                    .characteristics[1]
-                                    .write(utf8.encode('0'));
-                              }
-                            },
-                            child:
-                                snapshot.data == BluetoothDeviceState.connected
-                                    ? const Text('Print services')
-                                    : const Text('Does nothing'),
-                          ),
-                        ],
-                      ),
+                      child: snapshot.data == BluetoothDeviceState.connected
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(state.devices[index].name),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    if (snapshot.data ==
+                                        BluetoothDeviceState.connected) {
+                                      state.devices[index].disconnect();
+                                    } else {
+                                      state.devices[index].connect();
+                                    }
+                                  },
+                                  child:
+                                      // snapshot.data == BluetoothDeviceState.connected
+                                      //     ? const Text('Disconnect')
+                                      const Text('Disconnect'),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    if (snapshot.data ==
+                                        BluetoothDeviceState.disconnected) {
+                                    } else {
+                                      final List<BluetoothService> services =
+                                          state.devices[index].name == "ESP32"
+                                              ? await state.devices[index]
+                                                  .discoverServices()
+                                              : [];
+                                      services[2].characteristics[1].write(
+                                            utf8.encode('1'),
+                                          );
+                                    }
+                                  },
+                                  child:
+                                      // snapshot.data == BluetoothDeviceState.connected
+                                      //     ? const Text('Send 1')
+                                      const Text('ON'),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    if (snapshot.data ==
+                                        BluetoothDeviceState.disconnected) {
+                                    } else {
+                                      final List<BluetoothService> services =
+                                          state.devices[index].name == "ESP32"
+                                              ? await state.devices[index]
+                                                  .discoverServices()
+                                              : [];
+                                      services[2].characteristics[1].write(
+                                            utf8.encode('0'),
+                                          );
+                                    }
+                                  },
+                                  child:
+                                      // snapshot.data == BluetoothDeviceState.connected
+                                      //     ? const Text('Send 0')
+                                      const Text('OFF'),
+                                ),
+                              ],
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                  Text(state.devices[index].name),
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      if (snapshot.data ==
+                                          BluetoothDeviceState.connected) {
+                                        state.devices[index].disconnect();
+                                      } else {
+                                        state.devices[index].connect();
+                                      }
+                                    },
+                                    child:
+                                        // snapshot.data == BluetoothDeviceState.connected
+                                        //     ? const Text('Disconnect')
+                                        const Text('Connect'),
+                                  ),
+                                ]),
                     );
                   },
                 ),
