@@ -2,7 +2,7 @@ import 'package:boilerplate_app/cubit/ble_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blue/flutter_blue.dart';
-import 'package:flutter_blue/gen/flutterblue.pbserver.dart';
+import 'dart:convert';
 
 class ConnectView extends StatelessWidget {
   const ConnectView({Key? key}) : super(key: key);
@@ -23,7 +23,6 @@ class ConnectView extends StatelessWidget {
       ),
       body: BlocBuilder<BleCubit, BleState>(
         builder: (context, state) {
-          print(state.devices);
           return ListView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: state.devices.length,
@@ -40,15 +39,39 @@ class ConnectView extends StatelessWidget {
                         children: [
                           Text(state.devices[index].name),
                           ElevatedButton(
-                            onPressed: () {
-                              snapshot.data == BluetoothDeviceState.connected
-                                  ? state.devices[index].disconnect()
-                                  : state.devices[index].connect();
+                            onPressed: () async {
+                              if (snapshot.data ==
+                                  BluetoothDeviceState.connected) {
+                                state.devices[index].disconnect();
+                              } else {
+                                state.devices[index].connect();
+                              }
                             },
                             child:
                                 snapshot.data == BluetoothDeviceState.connected
                                     ? const Text('Disconnect')
                                     : const Text('Connect'),
+                          ),
+                          ElevatedButton(
+                            onPressed: () async {
+                              if (snapshot.data ==
+                                  BluetoothDeviceState.disconnected) {
+                                print("nothing to be done");
+                              } else {
+                                final List<BluetoothService> services =
+                                    state.devices[index].name == "ESP32"
+                                        ? await state.devices[index]
+                                            .discoverServices()
+                                        : [];
+                                services[2]
+                                    .characteristics[1]
+                                    .write(utf8.encode('0'));
+                              }
+                            },
+                            child:
+                                snapshot.data == BluetoothDeviceState.connected
+                                    ? const Text('Print services')
+                                    : const Text('Does nothing'),
                           ),
                         ],
                       ),

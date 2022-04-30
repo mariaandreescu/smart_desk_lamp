@@ -10,8 +10,7 @@ part 'ble_state.dart';
 class BleCubit extends Cubit<BleState> {
   List<BluetoothDevice> devices = [];
 
-  BleCubit()
-      : super(const BleState(status: BleStatus.loadingPaired, devices: []));
+  BleCubit() : super(const BleState(status: BleStatus.loadingPaired, devices: []));
 
   Future<void> search() async {
     emit(state.copyWith(status: BleStatus.searching));
@@ -26,12 +25,10 @@ class BleCubit extends Cubit<BleState> {
       );
       FlutterBlue.instance.scanResults.listen((results) {
         for (ScanResult result in results) {
-          if (result.device.type == BluetoothDeviceType.le &&
-              !devices.contains(result.device)) {
+          if (result.device.type == BluetoothDeviceType.le && !devices.contains(result.device)) {
             devices.add(result.device);
           }
         }
-        print(devices);
       });
       FlutterBlue.instance.stopScan();
       emit(state.copyWith(
