@@ -70,10 +70,7 @@ class ConnectView extends StatelessWidget {
                                           );
                                     }
                                   },
-                                  child:
-                                      // snapshot.data == BluetoothDeviceState.connected
-                                      //     ? const Text('Send 1')
-                                      const Text('ON'),
+                                  child: const Text('ON'),
                                 ),
                                 ElevatedButton(
                                   onPressed: () async {
@@ -90,10 +87,7 @@ class ConnectView extends StatelessWidget {
                                           );
                                     }
                                   },
-                                  child:
-                                      // snapshot.data == BluetoothDeviceState.connected
-                                      //     ? const Text('Send 0')
-                                      const Text('OFF'),
+                                  child: const Text('OFF'),
                                 ),
                               ],
                             )
@@ -110,10 +104,7 @@ class ConnectView extends StatelessWidget {
                                         state.devices[index].connect();
                                       }
                                     },
-                                    child:
-                                        // snapshot.data == BluetoothDeviceState.connected
-                                        //     ? const Text('Disconnect')
-                                        const Text('Connect'),
+                                    child: const Text('Connect'),
                                   ),
                                 ]),
                     );

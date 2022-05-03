@@ -20,7 +20,7 @@
     <uses-feature android:name="android.hardware.bluetooth_le" android:required="false"/>
 	  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
    <application
-        android:label="boilerplate_app"
+        android:label="Smart Desk Lamp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
