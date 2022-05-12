@@ -1,4 +1,5 @@
 import 'package:boilerplate_app/cubit/ble_cubit.dart';
+import 'package:easy_auth/easy_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blue/flutter_blue.dart';
@@ -13,11 +14,22 @@ class ConnectView extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Connect to device"),
         actions: [
-          GestureDetector(
-            onTap: () {
-              context.read<BleCubit>().search();
-            },
-            child: const Icon(Icons.refresh),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    context.read<BleCubit>().search();
+                  },
+                  child: const Icon(Icons.refresh),
+                ),
+                const SizedBox(
+                  width: 16,
+                ),
+                const LogoutButton(child: Icon(Icons.logout)),
+              ],
+            ),
           ),
         ],
       ),
