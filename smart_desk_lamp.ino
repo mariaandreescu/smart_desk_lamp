@@ -19,9 +19,8 @@ String deviceAddress;
 int16_t deviceRSSI;
 int threshold_light = 0;
 
-const int readPin = 32; // Use GPIO number. See ESP32 board pinouts
-const uint8_t LED = 2;// Could be different depending on the dev board. I used the DOIT ESP32 dev board.
-const uint8_t INPUT_LIGHT = 13;
+const uint8_t LED = 23;// Could be different depending on the dev board. I used the DOIT ESP32 dev board.
+const uint8_t INPUT_LIGHT = 36;
 
 TaskHandle_t taskC;
 TaskHandle_t taskS;
@@ -73,9 +72,10 @@ class MyCallbacks: public BLECharacteristicCallbacks {
 };
 
 void light_by_proximity(int deviceRSSI){
-  if (deviceRSSI > RSSI_THRESHOLD && threshold_light > 3500){
+  //&& threshold_light < 3000
+  if (deviceRSSI > RSSI_THRESHOLD && threshold_light < 3000){
     digitalWrite(LED, HIGH); // Turn on LED
-    delay(10000);
+    delay(5000);
   } else {
     Serial.println("Turning OFF!");
     digitalWrite(LED, LOW);
@@ -131,7 +131,7 @@ void setup() {
   Serial.begin(115200);
 
   pinMode(LED, OUTPUT);
-  pinMode(INPUT_LIGHT, INPUT);
+  pinMode(INPUT_LIGHT, OUTPUT);
 
    // Create the BLE Device
   BLEDevice::init("ESP32"); // Give it a name
